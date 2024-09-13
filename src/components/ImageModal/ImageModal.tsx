@@ -1,9 +1,19 @@
 import Modal from "react-modal";
 import { CiHeart, CiUser } from "react-icons/ci";
 import css from "./ImageModal.module.css";
+import { ModalState } from "../../App";
+
 Modal.setAppElement("#root");
 
-const ImageModal = ({ modalState, onModalClose }) => {
+interface ImageModalProps {
+  onModalClose: () => void;
+  modalState: ModalState;
+}
+
+const ImageModal: React.FC<ImageModalProps> = ({
+  modalState,
+  onModalClose,
+}) => {
   return (
     <Modal
       className={css.modal}
