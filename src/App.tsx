@@ -22,7 +22,7 @@ export interface ImageData {
   srcUrl: string;
   altDescription: string;
   authorName: string;
-  likes: string;
+  likes: number;
   largeDescription: string;
 }
 
@@ -43,7 +43,7 @@ function App() {
   const [error, setError] = useState<boolean>(false);
   const [showLoadMoreBtn, setShowLoadMoreBtn] = useState<boolean>(false);
   const [modalState, setModalState] = useState<ModalState>(MODAL_INITIAL_STATE);
-  const mainElem = useRef<HTMLDivElement | null>(null);
+  const mainElem = useRef<HTMLDivElement>(null);
 
   const handleSearch = (newSearch: string) => {
     setSearch(newSearch);
