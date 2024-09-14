@@ -1,5 +1,17 @@
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 
+interface ImageResponse {
+  total: number;
+  total_pages: number;
+  results: {
+    id: number;
+    alt_description: string;
+    urls: {
+      small: string;
+      regular: string;
+    };
+  }[];
+}
 const unsplashApi = axios.create({
   baseURL: "https://api.unsplash.com/",
   headers: {
@@ -7,13 +19,16 @@ const unsplashApi = axios.create({
   },
 });
 
-export default async function getImages(query, page) {
+export default async function getImages(query: string, page: number) {
   const params = {
     query,
     page,
     per_page: 12,
   };
 
-  const response = await unsplashApi.get("search/photos", { params });
+  const response: AxiosResponse<ImageResponse> = await unsplashApi.get(
+    "search/photos",
+    { params }
+  );
   return response.data;
 }
