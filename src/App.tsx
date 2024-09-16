@@ -61,7 +61,7 @@ function App() {
       srcUrl: image.urls.regular,
       altDescription: image.alt_description,
       authorName: image.user.name,
-      likes: image.likes,
+      likes: image.likes.toString(),
       largeDescription: image.alt_description,
     });
   };
