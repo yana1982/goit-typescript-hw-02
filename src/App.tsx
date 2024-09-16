@@ -55,20 +55,14 @@ function App() {
     setPage(page + 1);
   };
 
-  const handleModalOpen = (
-    srcUrl: string,
-    altDescription: string,
-    authorName: string,
-    likes: string,
-    largeDescription: string
-  ) => {
+  const handleModalOpen = (image: Image) => {
     setModalState({
       modalIsOpen: true,
-      srcUrl,
-      altDescription,
-      authorName,
-      likes,
-      largeDescription,
+      srcUrl: image.urls.regular,
+      altDescription: image.alt_description,
+      authorName: image.user.name,
+      likes: image.likes,
+      largeDescription: image.alt_description,
     });
   };
 

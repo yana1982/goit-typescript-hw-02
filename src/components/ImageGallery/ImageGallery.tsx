@@ -15,7 +15,7 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({
     <ul className={css.imgList}>
       {images.map((image) => {
         return (
-          <li className={css.imgItem} key={image.urls.regular}>
+          <li className={css.imgItem} key={image.id}>
             <ImageCard image={image} onImageClick={onImageClick} />
           </li>
         );
