@@ -72,7 +72,7 @@ function App() {
     });
   };
 
-  const handleModalClose = (image: Image) => {
+  const handleModalClose = (image?: Image) => {
     setModalState(MODAL_INITIAL_STATE);
   };
 
