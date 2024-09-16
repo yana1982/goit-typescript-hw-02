@@ -1,16 +1,10 @@
 import ImageCard from "../ImageCard/ImageCard";
 import css from "./ImageGallery.module.css";
-import { Image } from "../ImageCard/ImageCard";
+import { Image } from "../../js/unsplash-api";
 
-interface ImageGalleryProps {
+export interface ImageGalleryProps {
   images: Image[];
-  onImageClick: (
-    regular: string,
-    alt_description: string,
-    userName: string,
-    likes: number,
-    description?: string
-  ) => void;
+  onImageClick: (image: Image) => void;
 }
 
 const ImageGallery: React.FC<ImageGalleryProps> = ({
@@ -22,24 +16,7 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({
       {images.map((image) => {
         return (
           <li className={css.imgItem} key={image.urls.regular}>
-            <ImageCard
-              image={image}
-              onImageClick={(
-                regular,
-                alt_description,
-                userName,
-                likes,
-                description
-              ) =>
-                onImageClick(
-                  image.urls.regular,
-                  image.alt_description,
-                  image.user.name,
-                  image.likes,
-                  image.description
-                )
-              }
-            />
+            <ImageCard image={image} onImageClick={onImageClick} />
           </li>
         );
       })}

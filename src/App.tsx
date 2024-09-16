@@ -8,7 +8,7 @@ import ImageModal from "./components/ImageModal/ImageModal";
 import { useState, useEffect, useRef } from "react";
 import getImages from "./js/unsplash-api";
 import toast from "react-hot-toast";
-
+import { Image } from "../src/js/unsplash-api";
 export interface ModalState {
   modalIsOpen: boolean;
   srcUrl: string;
@@ -37,12 +37,12 @@ function App() {
   };
   const [search, setSearch] = useState<string>("");
   const [page, setPage] = useState<number>(1);
-  const [images, setImages] = useState<ImageData[]>([]);
-
+  const [images, setImages] = useState<Image[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<boolean>(false);
   const [showLoadMoreBtn, setShowLoadMoreBtn] = useState<boolean>(false);
   const [modalState, setModalState] = useState<ModalState>(MODAL_INITIAL_STATE);
+
   const mainElem = useRef<HTMLDivElement>(null);
 
   const handleSearch = (newSearch: string) => {
@@ -72,7 +72,7 @@ function App() {
     });
   };
 
-  const handleModalClose = () => {
+  const handleModalClose = (image: Image) => {
     setModalState(MODAL_INITIAL_STATE);
   };
 

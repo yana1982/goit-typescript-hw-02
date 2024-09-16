@@ -1,17 +1,21 @@
 import axios, { AxiosResponse } from "axios";
 
+export interface Image {
+  id: number;
+  alt_description: string;
+  urls: {
+    small: string;
+    regular: string;
+  };
+  user: { name: string };
+  likes: number;
+}
 interface ImageResponse {
   total: number;
   total_pages: number;
-  results: {
-    id: number;
-    alt_description: string;
-    urls: {
-      small: string;
-      regular: string;
-    };
-  }[];
+  results: Image[];
 }
+
 const unsplashApi = axios.create({
   baseURL: "https://api.unsplash.com/",
   headers: {
