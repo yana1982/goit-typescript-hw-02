@@ -18,14 +18,6 @@ export interface ModalState {
   largeDescription: string;
 }
 
-export interface ImageData {
-  srcUrl: string;
-  altDescription: string;
-  authorName: string;
-  likes: number;
-  largeDescription: string;
-}
-
 function App() {
   const MODAL_INITIAL_STATE: ModalState = {
     modalIsOpen: false,
@@ -66,7 +58,7 @@ function App() {
     });
   };
 
-  const handleModalClose = (image?: Image) => {
+  const handleModalClose = () => {
     setModalState(MODAL_INITIAL_STATE);
   };
 
